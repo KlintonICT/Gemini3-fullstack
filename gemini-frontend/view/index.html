@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Gemini-3: Log in</title>
+    <link rel="icon" href="../assets/gemini3-logo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/index.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="wrap-logo">
+            <img src="../assets/gemini3-logo.png" alt="gemini3-logo" class="gemini3-logo">
+        </div>
+        <div class="title">Gem|n| System</div>
+        <form id="login-form">
+            <div class="input-part">
+                <div class="username-part">
+                    <label for="username" class="text-input">Username</label>
+                    <input id="name-input" type="text" name="username" placeholder="input your username here" autocomplete="on" />
+                </div>
+                <div id="wrong-name" class="wrong-input">** your username is incorrect or does not exist, please try again</div>
+                <div class="password-part" style="margin-top: 10px">
+                    <label for="password" class="text-input">Password</label>
+                    <input id="pass-input" type="password" name="password" placeholder="input your password" autocomplete="on" />
+                </div>
+                <div id="wrong-pass" class="wrong-input">** your password is incorrect, please try again</div>
+            </div>
+            <div class="button-wrapper">
+                <div id="next-btn" class="button">Next ></div>
+                <div id="login-btn" class="button">Login</div>
+                <div id="link-to-home"></div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../script/apis.js"></script>
+    <script type="text/javascript" src="../script/index.js"></script>
+</body>
+</html>

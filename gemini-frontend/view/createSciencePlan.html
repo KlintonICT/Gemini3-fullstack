@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Create a Science Plan</title>
+    <link rel="icon" href="../assets/gemini3-logo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/createSciencePlan.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+</head>
+<body>
+    <div class="outside-container">
+        <div class="nav-bar">
+            <div class="nav-bar-logo-part">
+                <img src="../assets/gemini3-logo.png" alt="gemini3-logo" class="logo">
+                <span class="gemini-title">Gem|n| System</span>
+            </div>
+            <div class="nav-bar-login-name">
+                <span>Login as</span>
+                <span id="loginName"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner-container">
+                <span class="science-plan-title">Create a Science Plan</span>
+                <div class="collaborate-block">
+                    <span class="collaborate-text">Collaborators</span>
+                    <a href="#modal-collaborate" rel="modal:open" id="add-collaborate" class="add-collaborate">Add</a>
+                </div>
+                <div class="science-detail-title">
+                    <span class="text">Science Plan Detail</span>
+                    <span id="science-plan-id" style="color: #FFB4B4">(No. 12)</span>
+                </div>
+                <form id="science-form" class="science-detail-block">
+                    <div class="input-block">
+                        <label for="scienceName" class="text-input">Science Plan Name</label>
+                        <input id="scienceName" type="text" name="scienceName" required/>
+                    </div>
+                    <div class="divide-input-block">
+                        <div class="input-block" >
+                            <label for="objective" class="text-input">Objective</label>
+                            <input id="objective" type="text" name="objective" required/>
+                        </div>
+                        <div class="input-block">
+                            <label for="fund" class="text-input">Fund</label>
+                            <input id="fund" type="text" name="fund" required/>
+                        </div>
+                    </div>
+                    <div class="divide-input-block">
+                        <div class="input-block" >
+                            <label for="scheduleStart" class="text-input">Schedule Start</label>
+                            <input id="scheduleStart" type="date" name="scheduleStart" required />
+                        </div>
+                        <div class="input-block">
+                            <label for="scheduleStop" class="text-input">Schedule Stop</label>
+                            <input id="scheduleStop" type="date" name="scheduleStop" required/>
+                        </div>
+                    </div>
+                    <div class="divide-input-block" style="margin-top: 40px;">
+                        <div class="input-block" >
+                            <label for="starSystemId" class="text-input">Star System ID</label>
+                            <input type="text" name="starSystemId" id="starSystemId" required/>
+                        </div>
+                        <div class="input-block">
+                            <label for="teleLocated" class="text-input">Telescope Location</label>
+                            <select name="teleLocated" id="teleLocated" class="arrow">
+                                <option value="chile">CHILE (South)</option>
+                                <option value="hawaii">HAWAII (North)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="divide-input-block" style="margin-top: 40px;">
+                        <div class="input-block">
+                            <label for="fileType" class="text-input">File Type</label>
+                            <select name="fileType" id="fileType" class="arrow">
+                                <option value="png">PNG</option>
+                                <option value="jpg">JPG</option>
+                                <option value="raw">RAW</option>
+                                <option value="tiff">TIFF</option>
+                            </select>
+                        </div>
+                        <div class="input-block">
+                            <label for="fileQuality" class="text-input">File Quality</label>
+                            <input name="fileQuality" id="fileQuality"  type="number" step="any" required/>
+                        </div>
+                    </div>
+                    <div class="divide-input-block">
+                        <div class="input-block">
+                            <label for="colorType" class="text-input">Color Type</label>
+                            <select name="colorType" id="colorType" class="arrow">
+                                <option value="bw">BW</option>
+                                <option value="color">COLOR</option>
+                            </select>
+                        </div>
+                        <div class="input-block">
+                            <label for="color" class="text-input" >Colors</label>
+                            <input id="color" type="number" step="any" name="color" required/>
+                        </div>
+                    </div>
+                    <div class="divide-input-block">
+                        <div class="input-block">
+                            <label for="contrast" class="text-input" >Contrast</label>
+                            <input id="contrast" type="number" step="any" name="contrast" required/>
+                        </div>
+                        <div class="input-block">
+                            <label for="brightness" class="text-input" >Brightness</label>
+                            <input id="brightness" type="number" step="any" name="brightness" required/>
+                        </div>
+                    </div>
+                    <div class="divide-input-block">
+                        <div class="input-block">
+                            <label for="saturation" class="text-input" >Saturation</label>
+                            <input id="saturation" type="number" step="any" name="saturation" required/>
+                        </div>
+                    </div>
+                </form>
+                <button id="btn-send" form="science-form" class="send-btn">Send +</button>
+            </div>
+        </div>
+        <div id="modal-collaborate" class="modal" style="width: 30%; height: 80%;">
+            <div class="modal-content">
+                <span class="modal-title">Add Collaborators</span>
+                <div class="modal-body" id="modal-body"></div>
+            </div>
+            <!-- <div class="wrap-btn">
+                <span id="add-colla-btn" class="add-colla-btn">Add +</span>
+            </div> -->
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script type="text/javascript" src="../script/createSciencePlan.js"></script>
+</body>
+</html>
