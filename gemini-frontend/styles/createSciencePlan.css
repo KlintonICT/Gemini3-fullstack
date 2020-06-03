@@ -83,6 +83,12 @@ body{
     color: white;
 }
 
+.collaborate-text{
+    width: 85%;
+    overflow: auto;
+    height: 20px;
+}
+
 .add-collaborate{
     color:#002C55;
     background-color: #FFB4B4;
@@ -91,6 +97,9 @@ body{
     border-radius: 5px;
     font-weight: bold;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
 }
 
 .add-collaborate:hover{
@@ -196,10 +205,11 @@ input[type="number"]::-webkit-inner-spin-button {
     display: flex;
     flex-direction:column;
     overflow: auto;
-    height: 100%;
+    height: 90%;
 }
 
-.modal-body::-webkit-scrollbar{
+.modal-body::-webkit-scrollbar,
+.collaborate-text::-webkit-scrollbar{
     display: none;
 }
 
@@ -223,7 +233,7 @@ input[type="number"]::-webkit-inner-spin-button {
     background-position-x: 95%;
 }
 
-/* .wrap-btn {
+.wrap-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -237,4 +247,5 @@ input[type="number"]::-webkit-inner-spin-button {
     background-color: #FFB4B4;
     padding: 5px 20px;
     border-radius: 15px;
-} */
+    text-decoration: none;
+}

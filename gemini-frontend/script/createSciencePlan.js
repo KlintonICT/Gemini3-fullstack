@@ -100,9 +100,9 @@
             $(`#colla${idx}`).on('click', (e) => {
                 const elem = document.getElementById(`colla${idx}`);
                 if(!$(`#colla${idx}`).hasClass('active')){
-                    collaboratorList.push(idx);
+                    collaboratorList.push(ast);
                 }else{
-                    collaboratorList.splice(collaboratorList.indexOf(idx), 1);
+                    collaboratorList.splice(collaboratorList.indexOf(ast), 1);
                 }
                 elem.classList.toggle('active');
             })
@@ -131,18 +131,32 @@
         console.log("kdsdfsdf");
     }
 
+    const onAddCollaborator = () => {
+        let collaList = '';
+        if(collaboratorList.length > 0) {
+            collaboratorList.forEach(collaborator => {
+                collaList += collaborator + ', ';
+            })
+            collaList = collaList.replace(/,\s*$/, "");
+            document.getElementById('collaborate-text').innerHTML = collaList;
+        }else{
+            document.getElementById('collaborate-text').innerHTML = 'Collaborators';
+        }
+    }
+
     const onSubmitSciencePlan = ( event ) => { event.preventDefault(); }
 
     const setupListeners = () => {
         $('#science-form').on('submit', onSubmitSciencePlan);
         $('#btn-send').on('click', onSend);
+        $('#add-colla-btn').on('click', onAddCollaborator);
     }
 
     const run = async () => {
         const username = localStorage.getItem('currentUserName');
         document.getElementById('loginName').innerHTML = username;
 
-        astronomerList = ['Klinton', 'Ampere', 'Wipu', 'God', 'Rin', 'Klinton', 'Ampere', 'Wipu', 'God', 'Rin'];
+        astronomerList = ['Klinton', 'Ampere', 'Wipu', 'God', 'Rin'];
 
         setupListeners();
         validateInput();
