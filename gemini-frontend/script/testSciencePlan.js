@@ -68,17 +68,77 @@
                         $('#pending-block').remove();
                     }
                     if(tested.length <= 0){
-                        tested.push(elem);
-                        displayTested();
-                    }else{
-                        const testedBox = document.getElementById('tested-box');
-                        const temp = createTestedElem(elem);
-                        testedBox.appendChild( temp );
-                        tested.push( elem );
-                        modifyTested();
+                        document.getElementById('tested-block').style.display = 'block'; 
                     }
+                    const testedBox = document.getElementById('tested-box');
+                    const temp = createTestedElem(elem);
+                    testedBox.appendChild( temp );
+                    tested.push( elem );
+                    modifyTested();
+                    sciencePlanModal( elem );
                 }, 3000);
             })
+        })
+    }
+
+    const submitSciencePlan = ( elem ) => {
+        const buttonWrapper = document.getElementById('button-wrapper');
+        const submitBtn = document.createElement('span');
+        submitBtn.setAttribute('class', 'submitSciencePlanBtn');
+        submitBtn.setAttribute('id', `submitBtn${elem.sciencePlanId}`);
+        submitBtn.innerHTML = 'Submit';
+        buttonWrapper.appendChild(submitBtn);
+        $(`#submitBtn${elem.sciencePlanId}`).on('click', () => {
+            $.modal.close();
+            $(`#submitBtn${elem.sciencePlanId}`).remove();
+            $(`#tested${elem.sciencePlanId}`).remove();
+            const testedIndex = tested.findIndex(test => test.sciencePlanId === elem.sciencePlanId);
+            tested.splice(testedIndex, 1);
+            if(tested.length <= 0){
+                document.getElementById('tested-block').style.display = 'none';
+            }
+            emptyTests();
+        })
+        $('#cancel').on('click', () => { 
+            $.modal.close(); 
+            $(`#submitBtn${elem.sciencePlanId}`).remove();
+        })
+    }
+
+    const sciencePlanModal = ( elem ) => { 
+        $(`#submit${elem.sciencePlanId}`).on('click', () => {
+            $('#modal-submit').modal({
+                escapeClose: false,
+                clickClose: false,
+                showClose: false
+            });
+            document.getElementById('sciencePlanName').innerHTML = elem.sciencePlanName;
+            document.getElementById('sciencePlanId').innerHTML = `No. ${elem.sciencePlanId}`;
+            document.getElementById('collaborator').innerHTML = elem.collaborator;
+            document.getElementById('creator').innerHTML = elem.creator;
+            document.getElementById('objective').innerHTML = elem.objective;
+            document.getElementById('fund').innerHTML = `${elem.fund} $`;
+            document.getElementById('scheduleStart').innerHTML = elem.scheduleStart;
+            document.getElementById('scheduleStop').innerHTML = elem.scheduleStop;
+            document.getElementById('starSystemId').innerHTML = elem.starSystemId;
+            document.getElementById('starName').innerHTML = elem.starName;
+            document.getElementById('telescopeLocation').innerHTML = elem.telescopeLocation;
+            document.getElementById('description').innerHTML = elem.description;
+            document.getElementById('fileType').innerHTML = elem.fileType;
+            document.getElementById('fileQuality').innerHTML = elem.fileQuality;
+            document.getElementById('colorType').innerHTML = elem.colorType;
+            document.getElementById('color').innerHTML = elem.color;
+            document.getElementById('contrast').innerHTML = elem.contrast;
+            document.getElementById('brightness').innerHTML = elem.brightness;
+            document.getElementById('saturation').innerHTML = elem.saturation;
+            
+            submitSciencePlan( elem );
+        })
+    }
+
+    const submitSciencePlanModal = () => {
+        tested.forEach(elem => {
+            sciencePlanModal( elem );
         })
     }
 
@@ -155,12 +215,14 @@
         const submit = document.createElement('span');
         
         testedContent.setAttribute('class', 'tested-content');
+        testedContent.setAttribute('id', `tested${elem.sciencePlanId}`);
         number.setAttribute('class', 'no');
         title.setAttribute('class', 'title');
         buttonWrapper.setAttribute('class', 'tested-button-wrapper');
         modify.setAttribute('class', 'modify');
         modify.setAttribute('id', `testedModify${elem.sciencePlanId}`);
         submit.setAttribute('class', 'submit');
+        submit.setAttribute('id', `submit${elem.sciencePlanId}`);
 
         number.innerHTML = `No. ${elem.sciencePlanId}`;
         title.innerHTML = `${elem.sciencePlanName}`;
@@ -246,6 +308,9 @@
             empty.setAttribute('class', 'empty-tests-plan');
             empty.innerHTML = 'There is no science plan available here ...';
         }
+        if((conflicted.length + pending.length + tested.length <= 0) < 5){
+            document.getElementsByTagName('BODY')[0].style.height = '100vh';
+        }
     }
 
     const run = async () => {
@@ -266,6 +331,7 @@
         modifyPending();
         modifyTested();
         emptyTests();
+        submitSciencePlanModal();
     }
     run();
 })();
