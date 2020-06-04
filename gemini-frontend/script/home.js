@@ -1,7 +1,8 @@
 (() => {
     const run = async () => {
-       const username = localStorage.getItem('currentUserName');
-       document.getElementById('loginName').innerHTML = username;
+       var currentUser = localStorage.getItem('currentUser');
+       currentUser = currentUser ? JSON.parse(currentUser) : {};
+       document.getElementById('loginName').innerHTML = currentUser.username;
     }   
     run();
 })();

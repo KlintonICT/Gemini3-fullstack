@@ -1,29 +1,31 @@
 (() => {
     let allUsers = [];
-    let currentUserName;
+    let currentUser;
 
     const onPasswordLogin = () => {
         const password = document.getElementById('pass-input').value;
-        let currentUser = false;
+        let isCurrentUser = false;
 
         allUsers.forEach(user => {
-            if(user.username === currentUserName && user.password === password){
+            if(user.username === currentUser.username && user.password === password){
                 $('#wrong-pass').hide();
-                $('#link-to-home').html(`<a href="./home.html" id="home"></a>`)
-                location.href = $('#home').attr('href');
-                localStorage.setItem('currentUserName', currentUserName);
-                currentUser = true;
+                if(currentUser.role === 'astronomer'){
+                    $('#link-to-home').html(`<a href="./home.html" id="home"></a>`)
+                    location.href = $('#home').attr('href');
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                }
+                isCurrentUser = true;
             }
         })
 
-        if( !currentUser ){
+        if( !isCurrentUser ){
             $('#wrong-pass').slideDown(500);
         }
     }
 
     const onNameLogin = () => {
         const username = document.getElementById('name-input').value;
-        let currentUser = false;
+        let isCurrentUser = false;
         
         allUsers.forEach(user => {
             if(user.username === username) {
@@ -31,12 +33,12 @@
                 $('#next-btn').hide();
                 $('.password-part').slideDown(500);
                 $('#login-btn').slideDown(500);
-                currentUserName = username;
-                currentUser = true;
+                currentUser = user;
+                isCurrentUser = true;
             }
         })
         
-        if( !currentUser ){
+        if( !isCurrentUser ){
             $('#wrong-name').slideDown(500);
         }
     }
