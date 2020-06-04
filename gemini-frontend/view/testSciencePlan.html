@@ -26,25 +26,122 @@
             <div class="inner-container">
                 <span class="science-plan-title">Test a Science Plan</span>
                 <span id="empty-tests-plan"></span>
-                <div id="conflict-block" >
-                    <!-- <span class="block-title" style="color: red;">Conflicted Schedule</span>
-                    <div class="conflict-box">
-                        <div class="conflict-content">
-                            <div class="no">No.12</div>
-                            <div class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                            <div class="conflict-button-wrapper">
-                                <span class="modify">Modify</span>
-                                <span class="reject">Reject</span>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
+                <div id="conflict-block" ></div>
                 <div id="pending-block"></div>
                 <div id="tested-block"></div>
             </div>
         </div>
         <div id="modal-testing" class="modal" style="width: 20%">
             <div class="modal-testing-content">Plan is Testing ... </div>
+        </div>
+        <div id="modal-submit" class="modal" style="max-width: 60%">
+            <div class="science-plan-title">
+                <span id="sciencePlanName" class="sciencePlanName"></span>
+                <span id="sciencePlanId" class="sciencePlanId"></span>
+            </div>
+            <div class="modal-container">
+                <div class="modal-content-row">
+                    <div class="content-row">
+                        <span class="content-title">Collaborator</span>
+                        <span id="collaborator" class="content-result"></span>
+                    </div>
+                   <div class="content-row">
+                        <span class="content-title">Creator</span>
+                        <span id="creator" class="content-result"></span>
+                   </div>
+                </div>
+                <div class="modal-content-row">
+                    <div class="content-row">
+                        <span class="content-title">Objective</span>
+                        <span class="content-result" id="objective"></span>
+                    </div>
+                    <div class="content-row">
+                        <span class="content-title">Fund</span>
+                        <span class="content-result" id="fund"></span>
+                    </div>
+                </div>
+                <div class="modal-content-row">
+                    <div class="content-row">
+                        <span class="content-title">Schedule Start</span>
+                        <span id="scheduleStart" class="content-result"></span>
+                    </div>
+                   <div class="content-row">
+                        <span class="content-title">Schedule Stop</span>
+                        <span id="scheduleStop" class="content-result"></span>
+                   </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="science-plan-title">
+                <span class="sciencePlanName" style="font-size: 0.5em; margin-bottom: -10px;">Star System</span>
+            </div>
+            <div class="modal-container">
+                <div class="modal-content-row">
+                    <div class="content-row">
+                        <span class="content-title">Star System ID</span>
+                        <span id="starSystemId" class="content-result"></span>
+                    </div>
+                   <div class="content-row">
+                        <span class="content-title">Star Name</span>
+                        <span id="starName" class="content-result"></span>
+                   </div>
+                </div>
+                <div class="modal-content-row">
+                    <div class="content-row">
+                        <span class="content-title">Telescope Location</span>
+                        <span class="content-result" id="telescopeLocation"></span>
+                    </div>
+                    <div class="content-row">
+                        <span class="content-title">Description</span>
+                        <span class="content-result" id="description"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="science-plan-title">
+                <span class="sciencePlanName" style="font-size: 0.5em; margin-bottom: -10px;">Processing Data</span>
+            </div>
+            <div class="modal-container">
+                <div class="modal-content-row">
+                    <div class="content-row">
+                        <span class="content-title">File Type</span>
+                        <span id="fileType" class="content-result"></span>
+                    </div>
+                   <div class="content-row">
+                        <span class="content-title">File Quality</span>
+                        <span id="fileQuality" class="content-result"></span>
+                   </div>
+                </div>
+                <div class="modal-content-row">
+                    <div class="content-row">
+                        <span class="content-title">ColorType</span>
+                        <span class="content-result" id="colorType"></span>
+                    </div>
+                    <div class="content-row">
+                        <span class="content-title">Color</span>
+                        <span class="content-result" id="color"></span>
+                    </div>
+                </div>
+                <div class="modal-content-row">
+                    <div class="content-row">
+                        <span class="content-title">Contrast</span>
+                        <span class="content-result" id="contrast"></span>
+                    </div>
+                    <div class="content-row">
+                        <span class="content-title">Brightness</span>
+                        <span class="content-result" id="brightness"></span>
+                    </div>
+                </div>
+                <div class="modal-content-row">
+                    <div class="content-row">
+                        <span class="content-title">Saturation</span>
+                        <span class="content-result" id="saturation"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="button-wrapper" id="button-wrapper">
+                <span id="cancel" class="cancel">Cancel</span>
+            </div>
         </div>
         <div id="link-to-modify"></div>
     </div>
