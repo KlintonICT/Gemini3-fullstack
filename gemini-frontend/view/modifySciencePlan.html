@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Create a Science Plan</title>
+    <title>Modify Science Plan</title>
     <link rel="icon" href="../assets/gemini3-logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../styles/createSciencePlan.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/modifySciencePlan.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
 <body>
@@ -24,13 +24,14 @@
         </div>
         <div class="container">
             <div class="inner-container">
-                <span class="science-plan-title">Create a Science Plan</span>
+                <span class="science-plan-title">Modify Science Plan</span>
                 <div class="collaborate-block">
                     <span id="collaborate-text" class="collaborate-text">Collaborators</span>
                     <span id="add-collaborate" class="add-collaborate">Add</span> 
                 </div>
                 <div class="science-detail-title">
                     <span class="text">Science Plan Detail</span>
+                    <span id="science-plan-id" style="color: #FFB4B4"></span>
                 </div>
                 <form id="science-form" class="science-detail-block">
                     <div class="input-block">
@@ -115,7 +116,7 @@
                         </div>
                     </div>
                 </form>
-                <button id="btn-send" form="science-form" class="send-btn">Send +</button>
+                <button id="btn-send" form="science-form" class="send-btn">Save</button>
                 <div id="link-to-menu"></div>
             </div>
         </div>
@@ -133,6 +134,6 @@
     <script type="text/javascript" src="../script/apis.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <script type="text/javascript" src="../script/createSciencePlan.js"></script>
+    <script type="text/javascript" src="../script/modifySciencePlan.js"></script>
 </body>
 </html>

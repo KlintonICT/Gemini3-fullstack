@@ -16,6 +16,18 @@
         const sendBtn = document.getElementById('btn-send');
         let scienceName = false, objective = false, fund = false, start = false, stop = false, starSys = false;
         let fileQual = false, color = false, contrast = false, brightness = false, saturation = false;
+        
+        if(formElem.scienceName.value.length != 0 && formElem.objective.value.length != 0 &&
+            formElem.fund.value.length != 0 && formElem.scheduleStart.value.length != 0 &&
+            formElem.scheduleStop.value.length != 0 && formElem.starSystemId.value.length !=0 &&
+            formElem.fileQuality.value.length !=0 && formElem.color.value.length !=0 &&
+            formElem.contrast.value.length !=0 && formElem.brightness.value.length !=0 &&
+            formElem.saturation.value.length !=0){
+                scienceName = true, objective = true, fund = true, start = true, stop = true, starSys = true;
+                fileQual = true, color = true, contrast = true, brightness = true, saturation = true;
+                activeButton( scienceName, objective, fund, start, stop, starSys, fileQual, color, contrast, brightness, saturation );
+        }
+        
         $('#scienceName').on('change', () => {
             if( formElem.scienceName.value.length === 0) { 
                 scienceName = false; 
@@ -137,8 +149,8 @@
     const onSend = () => {
         // send science plan to database
         if($('#btn-send').hasClass('active')){
-            $('#link-to-menu').html(`<a href="./home.html" id="home"></a>`)
-            location.href = $('#home').attr('href');
+            $('#link-to-menu').html(`<a href="./testSciencePlan.html" id="testSciencePlan"></a>`)
+            location.href = $('#testSciencePlan').attr('href');
         }
     }
 
@@ -171,6 +183,30 @@
         }
     }
 
+    const displayExistingInfo = () => {
+        var modifyPlan = localStorage.getItem('modifyPlan');
+        modifyPlan = modifyPlan ? JSON.parse(modifyPlan) : {};
+        var sStart = modifyPlan.scheduleStart.split('/');
+        var sStop = modifyPlan.scheduleStop.split('/');
+        document.getElementById('science-plan-id').innerHTML = `(No. ${modifyPlan.sciencePlanId})`;
+        document.getElementById('scienceName').value = modifyPlan.sciencePlanName;
+        document.getElementById('objective').value = modifyPlan.objective;
+        document.getElementById('fund').value = modifyPlan.fund;
+        document.getElementById('scheduleStart').value = sStart[2] + '-' + sStart[1] + '-' + sStart[0];
+        document.getElementById('scheduleStop').value = sStop[2] + '-' + sStop[1] + '-' + sStop[0];
+        document.getElementById('starSystemId').value = modifyPlan.starSystemId;
+        document.getElementById('teleLocated').value = modifyPlan.telescopeLocation.toLowerCase();
+        document.getElementById('fileType').value = modifyPlan.fileType.toLowerCase();
+        document.getElementById('fileQuality').value = modifyPlan.fileQuality;
+        document.getElementById('colorType').value = modifyPlan.colorType.toLowerCase();
+        document.getElementById('color').value = modifyPlan.color;
+        document.getElementById('contrast').value = modifyPlan.contrast;
+        document.getElementById('brightness').value = modifyPlan.brightness;
+        document.getElementById('saturation').value = modifyPlan.saturation;
+
+        validateInput();
+    }
+
     const setupListeners = () => {
         $('#science-form').on('submit', onSubmitSciencePlan);
         $('#btn-send').on('click', onSend);
@@ -189,6 +225,7 @@
         validateInput();
         displayAstronomerList();
         selectCollabor();
+        displayExistingInfo();
     }   
     run();
 })();
