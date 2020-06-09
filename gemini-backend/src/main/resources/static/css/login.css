@@ -1,0 +1,98 @@
+body {
+    background: #002C55;
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-img{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../images/bg.jpg');
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+.main_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.wrap-picture{
+    text-align: center;
+    width: 100%;
+}
+.gemini-3-logo{
+    width: 10%;
+    height: 10%;
+}
+.title{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 3%;
+}
+.input-part{
+    text-align: center;
+}
+
+.username-part{
+    width: 20%;
+    margin-left: 39%;
+}
+.test-username{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #FFB4B4;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.input-username{
+    width: 100%;
+    border: none;
+    padding: 5%;
+    border-radius: 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #002C55;
+}
+input:focus{
+    outline: none;
+}
+.underline-input{
+    width: 108.2%;
+    border: 2px #FFB4B4 solid;
+}
+
+.wrong-username {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    color: #FFFFFF;
+    margin-top: 2%;
+}
+
+.next-button{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 2%;
+    color: #002C55;
+    background: #FFB4B4;
+    width: 75px;
+    border-radius: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 46%;
+    cursor: pointer;
+}
