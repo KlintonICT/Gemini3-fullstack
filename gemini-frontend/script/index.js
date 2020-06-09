@@ -13,6 +13,10 @@
                     $('#link-to-home').html(`<a href="./home.html" id="home"></a>`)
                     location.href = $('#home').attr('href');
                     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                }else if(currentUser.role === 'science observer'){
+                    $('#link-to-home').html(`<a href="./executedSciencePlan.html" id="executedSciencePlan"></a>`)
+                    location.href = $('#executedSciencePlan').attr('href');
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
                 }
                 isCurrentUser = true;
             }
@@ -53,13 +57,13 @@
 
     const run = async () => {
         setupListeners();
-        
-        allUsers = await getAllUsers();
 
         $('#wrong-name').hide();
         $('#wrong-pass').hide();
         $('#login-btn').hide();
         $('.password-part').hide();
+
+        allUsers = await getAllUsers();
     }
     run();
 })();

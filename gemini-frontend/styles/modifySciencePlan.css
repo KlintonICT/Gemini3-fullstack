@@ -41,6 +41,21 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 8px;
+    margin-left: 20px;
+}
+.log-name-area{
+    display: flex;
+    flex-direction: row;
+}
+
+#logout:hover{
+    cursor: pointer;
+    background-color: #FFB4B4;
+    color: #002C55;
+}
+
+#back-home{
+    cursor: pointer;
 }
 .container{
     background-image: url('../assets/bg2.png');
@@ -162,7 +177,7 @@ select{
     padding: 5.4px;
 }
 
-.send-btn{
+.save-btn{
     font-family: 'Roboto', sans-serif;
     margin-top: 30px;
     margin-bottom: 40px;
@@ -176,12 +191,12 @@ select{
     outline:none;
 }
 
-.send-btn.active{
+.save-btn.active{
     color: #002C55;
     background-color: #FFB4B4;
 }
 
-.send-btn.active:hover{
+.save-btn.active:hover{
     cursor: pointer;
 }
 input[type="number"]::-webkit-outer-spin-button,
@@ -248,4 +263,15 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 5px 20px;
     border-radius: 15px;
     text-decoration: none;
+}
+
+.subCategory-block{
+    display: none;
+}
+
+.noOthers{
+    color: red;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
 }

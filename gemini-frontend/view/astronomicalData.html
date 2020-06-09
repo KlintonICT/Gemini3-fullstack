@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Test Science Plan</title>
+    <title>Astronomical Data</title>
     <link rel="icon" href="../assets/gemini3-logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../styles/testSciencePlan.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/astronomicalData.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
 <body>
@@ -29,17 +29,12 @@
         </div>
         <div class="container">
             <div class="inner-container">
-                <span class="science-plan-title">Test a Science Plan</span>
-                <span id="empty-tests-plan"></span>
-                <div id="conflict-block" ></div>
-                <div id="pending-block"></div>
-                <div id="tested-block"></div>
+                <span class="science-plan-title">Validated Science Plan</span>
+                <span id="empty-validated-plan"></span>
+                <div id="validated-block"></div>
             </div>
         </div>
-        <div id="modal-testing" class="modal" style="width: 20%">
-            <div class="modal-testing-content">Plan is Testing ... </div>
-        </div>
-        <div id="modal-submit" class="modal" style="max-width: 60%">
+        <div id="modal-validate" class="modal" style="max-width: 60%">
             <div class="science-plan-title">
                 <span id="sciencePlanName" class="sciencePlanName"></span>
                 <span id="sciencePlanId" class="sciencePlanId"></span>
@@ -146,17 +141,41 @@
                     </div>
                 </div>
             </div>
+            <div class="divider"></div>
+            <div class="science-plan-title">
+                <span class="sciencePlanName" style="font-size: 0.5em; margin-bottom: -10px;">Review</span>
+            </div>
+            <div class="modal-container" id="review-part">
+                <div class="modal-content-row">
+                    <div id="empty-picture" class="empty-picture">There is no any pictures available here ...</div>
+                </div>
+            </div>
+            <div class="divider" style="margin-top: -5px;"></div>
+            <div class="science-plan-title">
+                <span class="sciencePlanName" style="font-size: 0.5em; margin-bottom: -10px;">Comment</span>
+            </div>
+            <div id="modal-container">
+                <div class="modal-content-row">
+                    <span id="comment-content" class="comment-content"></span>
+                </div>
+            </div>
+            <div class="modal-container">
+                <div class="modal-content-row-result">
+                    <div class="modal-content-validation">Validation Result: </div>
+                    <div class="modal-content-pass">PASS</div>
+                </div>
+            </div>
             <div class="button-wrapper" id="button-wrapper">
-                <span id="cancel" class="cancel">Cancel</span>
+                <span id="cancel" class="cancel">Close</span>
             </div>
         </div>
-        <div id="link-to-modify"></div>
+        <div id="link-to-image"></div>
         <div id="go-to-login"></div>
     </div>
 
     <script type="text/javascript" src="../script/apis.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <script type="text/javascript" src="../script/testSciencePlan.js"></script>
+    <script type="text/javascript" src="../script/astronomicalData.js"></script>
 </body>
 </html>
