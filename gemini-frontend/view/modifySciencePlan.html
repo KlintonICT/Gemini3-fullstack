@@ -13,13 +13,18 @@
 <body>
     <div class="outside-container">
         <div class="nav-bar">
-            <div class="nav-bar-logo-part">
+            <div class="nav-bar-logo-part" id="back-home">
                 <img src="../assets/gemini3-logo.png" alt="gemini3-logo" class="logo">
                 <span class="gemini-title">Gem|n| System</span>
             </div>
-            <div class="nav-bar-login-name">
-                <span>Login as</span>
-                <span id="loginName"></span>
+            <div class="log-name-area">
+                <div class="nav-bar-login-name" id="logout">
+                    <span>Logout</span>
+                </div>
+                <div class="nav-bar-login-name">
+                    <span>Login as</span>
+                    <span id="loginName"></span>
+                </div>
             </div>
         </div>
         <div class="container">
@@ -45,7 +50,7 @@
                         </div>
                         <div class="input-block">
                             <label for="fund" class="text-input">Fund</label>
-                            <input id="fund" type="text" name="fund" required/>
+                            <input id="fund" type="number" name="fund" step="any" required/>
                         </div>
                     </div>
                     <div class="divide-input-block">
@@ -59,76 +64,96 @@
                         </div>
                     </div>
                     <div class="divide-input-block" style="margin-top: 40px;">
-                        <div class="input-block" >
-                            <label for="starSystemId" class="text-input">Star System ID</label>
-                            <input type="text" name="starSystemId" id="starSystemId" required/>
+                        <div class="input-block">
+                            <label for="category" class="text-input">Category</label>
+                            <select type="text" name="category" id="category">
+                                <option value="planet">Planet</option>
+                                <option value="satellite">Satellite</option>
+                                <option value="comet">Comet</option>
+                                <option value="others">Others</option>
+                            </select>
                         </div>
                         <div class="input-block">
                             <label for="teleLocated" class="text-input">Telescope Location</label>
-                            <select name="teleLocated" id="teleLocated" class="arrow">
-                                <option value="chile">CHILE (South)</option>
-                                <option value="hawaii">HAWAII (North)</option>
+                            <select name="teleLocated" id="teleLocated" >
+                                <option value="CHILE">CHILE (South)</option>
+                                <option value="HAWAII">HAWAII (North)</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="divide-input-block">
+                        <div class="input-block" id="subCategory-block">
+                            <label for="subCategory" class="text-input">Subcategory</label>
+                            <select name="subCategory" id="subCategory" ></select>
+                        </div>
+                    </div>
+                    <div class="divide-input-block">
+                        <div class="input-block">
+                            <label for="starSystem" class="text-input">Star System</label>
+                            <select name="starSystem" id="starSystem" ></select>
                         </div>
                     </div>
                     <div class="divide-input-block" style="margin-top: 40px;">
                         <div class="input-block">
                             <label for="fileType" class="text-input">File Type</label>
                             <select name="fileType" id="fileType" class="arrow">
-                                <option value="png">PNG</option>
-                                <option value="jpg">JPG</option>
-                                <option value="raw">RAW</option>
-                                <option value="tiff">TIFF</option>
+                                <option value="PNG">PNG</option>
+                                <option value="JPG">JPG</option>
+                                <option value="RAW">RAW</option>
+                                <option value="TIFF">TIFF</option>
                             </select>
                         </div>
                         <div class="input-block">
                             <label for="fileQuality" class="text-input">File Quality</label>
-                            <input name="fileQuality" id="fileQuality"  type="number" step="any" required/>
+                            <input name="fileQuality" id="fileQuality" placeholder="0-100" min="0" max="100" type="number" step="any" required/>
                         </div>
                     </div>
                     <div class="divide-input-block">
                         <div class="input-block">
                             <label for="colorType" class="text-input">Color Type</label>
                             <select name="colorType" id="colorType" class="arrow">
-                                <option value="bw">BW</option>
-                                <option value="color">COLOR</option>
+                                <option value="BW">BW</option>
+                                <option value="COLOR">COLOR</option>
                             </select>
                         </div>
                         <div class="input-block">
                             <label for="color" class="text-input" >Colors</label>
-                            <input id="color" type="number" step="any" name="color" required/>
+                            <input id="color" type="number" placeholder="0-100" min="0" max="100" step="any" name="color" required/>
                         </div>
                     </div>
                     <div class="divide-input-block">
                         <div class="input-block">
                             <label for="contrast" class="text-input" >Contrast</label>
-                            <input id="contrast" type="number" step="any" name="contrast" required/>
+                            <input id="contrast" type="number" placeholder="0-100" min="0" max="100" step="any" name="contrast" required/>
                         </div>
                         <div class="input-block">
                             <label for="brightness" class="text-input" >Brightness</label>
-                            <input id="brightness" type="number" step="any" name="brightness" required/>
+                            <input id="brightness" type="number" placeholder="0-100" min="0" max="100" step="any" name="brightness" required/>
                         </div>
                     </div>
                     <div class="divide-input-block">
                         <div class="input-block">
                             <label for="saturation" class="text-input" >Saturation</label>
-                            <input id="saturation" type="number" step="any" name="saturation" required/>
+                            <input id="saturation" type="number" placeholder="0-100" min="0" max="100" step="any" name="saturation" required/>
                         </div>
                     </div>
                 </form>
-                <button id="btn-send" form="science-form" class="send-btn">Save</button>
+                <button id="btn-save" form="science-form" class="save-btn">Save</button>
                 <div id="link-to-menu"></div>
             </div>
         </div>
         <div id="modal-collaborate" class="modal" style="width: 30%; height: 80%;">
             <div class="modal-content">
                 <span class="modal-title">Add Collaborators</span>
-                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-body" id="modal-body">
+                    <div id="noOthers" class="noOthers">There are no other astronomers.</div>
+                </div>
             </div>
             <div class="wrap-btn">
                 <a id="add-colla-btn" class="add-colla-btn" href="#" rel="modal:close">Add +</a>
             </div>
         </div>
+        <div id="go-to-login"></div>
     </div>
 
     <script type="text/javascript" src="../script/apis.js"></script>

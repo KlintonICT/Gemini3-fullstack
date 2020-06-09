@@ -41,6 +41,7 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 8px;
+    margin-left: 20px;
 }
 .container{
     background-image: url('../assets/bg2.png');
@@ -248,4 +249,30 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 5px 20px;
     border-radius: 15px;
     text-decoration: none;
+}
+
+.subCategory-block{
+    display: none;
+}
+
+.noOthers{
+    color: red;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.log-name-area{
+    display: flex;
+    flex-direction: row;
+}
+
+#logout:hover{
+    cursor: pointer;
+    background-color: #FFB4B4;
+    color: #002C55;
+}
+
+#back-home{
+    cursor: pointer;
 }

@@ -16,17 +16,23 @@
                 <img src="../assets/gemini3-logo.png" alt="gemini3-logo" class="logo">
                 <span class="gemini-title">Gem|n| System</span>
             </div>
-            <div class="nav-bar-login-name">
-                <span>Login as</span>
-                <span id="loginName"></span>
+            <div class="log-name-area">
+                <div class="nav-bar-login-name" id="logout">
+                    <span>Logout</span>
+                </div>
+                <div class="nav-bar-login-name">
+                    <span>Login as</span>
+                    <span id="loginName"></span>
+                </div>
             </div>
         </div>
         <div class="menu-part">
             <span class="menu-title">Menu</span>
-            <a href="./createSciencePlan.html">Create a Science Plan</a>
-            <a href="./testSciencePlan.html">Test Science Plan</a>
-            <a id="validated-menu" href="#">Access Astronimocal Data </a>
+            <a class="menu-item" href="./createSciencePlan.html">Create a Science Plan</a>
+            <a class="menu-item" href="./testSciencePlan.html">Test Science Plan</a>
+            <a class="menu-item" href="./astronomicalData.html">Access Astronimocal Data </a>
         </div>
+        <div id="go-to-login"></div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

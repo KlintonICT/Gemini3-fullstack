@@ -1,0 +1,325 @@
+body{
+    padding: 0;
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+    background: #002C55;
+    font-weight: 600;
+    background-image: url('../assets/bg-3.png');
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: 100% 100%;
+    height: 100%;
+}
+
+.nav-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.nav-bar-logo-part{
+    display: flex;
+    flex-direction: row;
+}
+
+.logo{
+    width: 30px;
+    height: 30px;
+}
+
+.gemini-title{
+    color: white;
+    font-weight: 600;
+    margin-left: 5px;
+    font-size: 1em;
+    align-items: center;
+    align-self: center;
+}
+
+.nav-bar-login-name{
+    color: white;
+    font-size: 0.8em;
+    border: 1px white solid;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    margin-left: 20px;
+}
+.log-name-area{
+    display: flex;
+    flex-direction: row;
+}
+
+#logout:hover{
+    cursor: pointer;
+    background-color: #FFB4B4;
+    color: #002C55;
+}
+
+.container{
+    margin-bottom: 3%;
+}
+
+.inner-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.science-plan-title {
+    color: white;
+    font-weight: 900;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.empty-executed-plan{
+    color: red;
+    margin-top: 50px;
+    font-style: italic;
+}
+
+.executed-block{
+    width: 60%;
+}
+
+.executed-box{
+    border: 1px white solid;
+    margin-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    border-radius: 12px;
+}
+
+.next{
+    background-color: #FFB4B4;
+    color: #002C55;
+    padding: 1px 7px;
+    border-radius: 5px;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.next:hover{
+    cursor: pointer;
+}
+
+.executed-button-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 7%;
+}
+
+.title{
+    width: 65%;
+}
+
+.no{
+    width: 10%;
+    align-self: center;
+    margin-right: 10px;
+}
+
+.executed-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.8em;
+    color: white;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.cancel:hover,
+.validateSciencePlanBtn:hover {
+    cursor: pointer;
+}
+
+.cancel{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 15px;
+}
+
+.validateSciencePlanBtn{
+    background-color: #FFB4B4;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-left: 15px;
+}
+
+.modal-container{
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 0.8em;
+}
+
+.modal-content-row{
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.content-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 48%;
+}
+
+.content-title{
+    width: 40%;
+}
+
+.content-result {
+    width: 55%;
+    color: #A0A0A0;
+}
+
+.divider{
+    margin-top: 40px;
+    border-bottom: 2px solid #A0A0A0;
+    opacity: 0.4;
+    margin-bottom: 10px;
+    width: 94%;
+    margin-left: 3%;
+}
+
+.button-wrapper{
+    font-size: 1em;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    color: #002C55;
+}
+
+.science-plan-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.sciencePlanName{
+    font-size: 0.6em;
+    color: black;
+}
+.sciencePlanId{
+    color: #FFB4B4;
+    font-size: 0.6em;
+    border: 1px #FFB4B4 solid;
+    border-radius: 5px;
+    padding: 1px 10px;
+    margin-left: 100px;
+}
+
+.comment{
+    padding:10px;
+    width: 95%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.modal-picture-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.picture-button{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 0;
+    font-size: 0.8em;
+    margin-top: -3px;
+}
+
+.pass{
+    width: 33.33%;
+    text-align: center;
+    color:  #1FBC2F;;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0.5px grey solid;
+}
+
+.minor{
+    width: 33.33%;
+    color: white;
+    text-align: center;
+    color: #F29100;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0.5px grey solid;
+}
+
+.major{
+    width: 33.33%;
+    color: white;
+    text-align: center;
+    color: #D42828;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0.5px grey solid;
+}
+
+.pass:hover,
+.minor:hover,
+.major:hover{
+    cursor: pointer;
+}
+
+.pass.active{
+    color: white;
+    background-color: #1FBC2F;
+}
+
+.minor.active{
+    color: white;
+    background-color: #F29100;
+}
+
+.major.active{
+    color: white;
+    background-color: #D42828;
+}
+
+.notify-astronomer{
+    font-size: 1.4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notify-button-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: #002C55;
+    margin-top: 20px;
+}
+
+.notify-button-yes{
+    background-color: #FFB4B4;
+    border-radius: 15px;
+}
+
+.notify-button-no,
+.notify-button-yes{
+    cursor: pointer;
+    padding: 5px 30px;
+}
+
+img:hover{
+    cursor: pointer;
+}
