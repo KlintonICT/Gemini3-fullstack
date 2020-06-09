@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html";
+          charset="UTF-8" />
+    <title>Gemini-3: Log in</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/login.css" />
+    <link rel="shortcut icon" href="/images/gemini-3-logo.svg" />
+</head>
+<body class="bg">
+<div id="bg-img" class="bg-img">
+    <div id="main_div">
+        <div class="wrap-picture">
+            <img src="/images/gemini-3-logo.svg" alt="gemini-3 logo" class="gemini-3-logo"/>
+        </div>
+        <div class="title">Gem|n| System</div>
+        <form>
+            <div class="input-part">
+                <div class="username-part">
+                    <div class="test-username">Username</div>
+                    <div>
+                        <input id="user-input" type="text" class="input-username" name="username" placeholder="input your username here" />
+                    </div>
+                    <div class="underline-input"></div>
+                </div>
+                <div id="wrong-name" class="wrong-username">** your username is incorrect or does not exist, please try again</div>
+                <div id="password-field" class="username-part" style="margin-top: 10px">
+                    <div id="pass-title" class="test-username">Password</div>
+                    <div>
+                        <input id="pass-input" type="password" class="input-username" name="password" placeholder="input your password" />
+                    </div>
+                    <div id="pass-line" class="underline-input"></div>
+                </div>
+                <div id="wrong-pass" class="wrong-username">** your password is incorrect, please try again</div>
+            </div>
+            <div id="next-btn" class="next-button">Next ></div>
+            <div id="login-btn" class="next-button">Login</div>
+            <div id="placeholder"></div>
+        </form>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script th:inline="javascript">
+    var users = [[${users}]]
+    $(document).ready(function() {
+        var userExist = false;
+        var currentUser;
+        $('#wrong-name').hide();
+        $('#pass-title').hide();
+        $('#pass-input').hide();
+        $('#pass-line').hide();
+        $('#wrong-pass').hide();
+        $('#login-btn').hide();
+        $('#next-btn').on('click', function() {
+            var username = $("#user-input").val();
+            for(var i = 0; i < users.length; i++){
+                if(username===users[i].username){
+                    $('#wrong-name').hide(500);
+                    $('#pass-title').show(1000);
+                    $('#pass-input').show(1000);
+                    $('#pass-line').show(1000);
+                    $('#next-btn').hide(1000);
+                    $('#login-btn').show(1000);
+                    userExist = true;
+                    currentUser = users[i];
+                    break;
+                }
+            }
+            if(!userExist){
+                $('#wrong-name').show(500);
+            }
+        });
+        $('#login-btn').on('click', function () {
+            if(userExist) {
+                var typedPassword = $('#pass-input').val();
+                if(typedPassword===currentUser.password) {
+                    $('#placeholder').html(
+                        '<a href="/welcome?username=' + currentUser.username + '" id="link"></a>'
+                    )
+                    location.href = $("#link").attr('href');
+                } else {
+                    $('#wrong-pass').show(500);
+                }
+            }
+        });
+    })
+</script>
+</body>
+</html>

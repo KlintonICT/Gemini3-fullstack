@@ -1,0 +1,5 @@
+2020-06-09 16:09:48 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM USERDB
+SELECT[*] * FROM SCIENCE_PLAN"; SQL statement:
+select * from USERDB
+select * from SCIENCE_PLAN [42000-200]
