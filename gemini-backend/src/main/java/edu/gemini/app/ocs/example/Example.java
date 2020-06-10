@@ -101,5 +101,24 @@ public class Example {
                 e.printStackTrace();
             }
         }
+
+        /* 4. Example code on how to get astronomical data with only links */
+        /* Reuse myPlan from the previous example */
+        /* to be able to go through the next step, I need to manually change the
+        status to COMPLETE. The real system will set this one according to
+        its schedule and execution. */
+        // check the status first. It must be COMPLETE in order to get the astro data
+        if (myPlan.getStatus() == BaseSciencePlan.STATUS.COMPLETE) {
+            AstronomicalData astroData = myPlan.getObservingProgram().getAstroData();
+            try {
+                ArrayList<String> imageLinks = astroData.getAstronomicalDataLinks();
+                for (String link : imageLinks) {
+                    System.out.println(link);
+                }
+                System.out.println("Images = " + imageLinks.size());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

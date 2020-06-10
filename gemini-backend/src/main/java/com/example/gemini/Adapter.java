@@ -2,6 +2,8 @@ package com.example.gemini;
 
 import edu.gemini.app.ocs.OCS;
 import edu.gemini.app.ocs.example.MyObservingProgram;
+import edu.gemini.app.ocs.model.BaseObservingProgram;
+import edu.gemini.app.ocs.model.BaseSciencePlan;
 import edu.gemini.app.ocs.model.Filter;
 import edu.gemini.app.ocs.model.Lens;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,6 @@ import java.util.ArrayList;
 
 public class Adapter {
 
-
     public Adapter() { }
 
     public void addSciencePlan(OCS ocs, SciencePlanRepo sciencePlanRepo) {
@@ -18,8 +19,7 @@ public class Adapter {
         for(SciencePlan sc: sciencePlanRepo.findAll()) {
             AdapterSciencePlan sciencePlan = new AdapterSciencePlan();
             sciencePlan.fromSciencePlan(sc);
-            ocs.submitSciencePlan(sciencePlan);
-            MyObservingProgram myOP = new MyObservingProgram();
+            BaseObservingProgram myOP = new BaseObservingProgram();
             myOP.setId(i++);
             myOP.setLoc(ocs.getLocation(sc.getStartDate().getYear(), sc.getStartDate().getMonth(),
                     sc.getStartDate().getDay(), sc.getStarSystem()));
@@ -33,16 +33,13 @@ public class Adapter {
             myOP.setExposures(exp1);
             myOP.setLightDetectorOn(false);
             myOP.setSpecialEquipments(null);
-            edu.gemini.app.ocs.model.AstronomicalData data1 = new edu.gemini.app.ocs.model.AstronomicalData();
-            myOP.setAstroData(data1);
+            edu.gemini.app.ocs.model.AstronomicalData data = new edu.gemini.app.ocs.model.AstronomicalData();
+            myOP.setAstroData(data);
+            sciencePlan.setObservingProgram(myOP);
+            ocs.submitSciencePlan(sciencePlan);
+            System.out.println(data);
+            System.out.println("adapter\n" + sciencePlan);
         }
     }
-
-//    public ArrayList<String> allURL(OCS ocs) {
-//        ArrayList<String> imagePaths = new ArrayList<>();
-//        AstronomicalData data = new AstronomicalData();
-//        imagePaths = data.getAstronomicalData();
-//        return imagePaths;
-//    }
 
 }

@@ -7,16 +7,13 @@ package edu.gemini.app.ocs.model;
 
 import jparsec.ephem.Target;
 
-import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 public class BaseSciencePlan {
-
     private int planNo;
     private String creator;
     private String submitter;
@@ -26,8 +23,8 @@ public class BaseSciencePlan {
     private Date startDate;
     private Date endDate;
     private TELESCOPELOC telescopeLocation;
-    private List<DataProcRequirement> dataProcRequirements;
-    private transient BaseObservingProgram observingProgram;
+    private ArrayList<DataProcRequirement> dataProcRequirements;
+    private BaseObservingProgram observingProgram;
     private STATUS status;
 
     public enum TELESCOPELOC {
@@ -129,7 +126,7 @@ public class BaseSciencePlan {
         this.telescopeLocation = telescopeLocation;
     }
 
-    public List<DataProcRequirement> getDataProcRequirements() {
+    public ArrayList<DataProcRequirement> getDataProcRequirements() {
         return dataProcRequirements;
     }
 

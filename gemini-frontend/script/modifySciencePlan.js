@@ -363,8 +363,8 @@
     const displayExistingInfo = () => {
         var modifyPlan = localStorage.getItem('modifyPlan');
         modifyPlan = modifyPlan ? JSON.parse(modifyPlan) : {};
-        var sStart = modifyPlan.startDate.split('T');
-        var sStop  = modifyPlan.endDate.split('T');
+        var sStart = modifyPlan.startDate.split('/');
+        var sStop  = modifyPlan.endDate.split('/');
         planID     = modifyPlan.planID;
         creator    = modifyPlan.creator;
         collaboratorList = modifyPlan.collaborator;     
@@ -384,8 +384,8 @@
         document.getElementById('scienceName').value         = modifyPlan.planName;
         document.getElementById('objective').value           = modifyPlan.objectives;
         document.getElementById('fund').value                = modifyPlan.fundingInUSD;
-        document.getElementById('scheduleStart').value       = sStart[0];
-        document.getElementById('scheduleStop').value        = sStop[0];
+        document.getElementById('scheduleStart').value       = sStart[2] + '-' + sStart[1] + '-' + sStart[0];
+        document.getElementById('scheduleStop').value        = sStop[2] + '-' + sStop[1] + '-' + sStop[0];
         document.getElementById('teleLocated').value         = modifyPlan.telescopeLocation;
         document.getElementById('fileType').value            = modifyPlan.fileType;
         document.getElementById('fileQuality').value         = modifyPlan.fileQuality;

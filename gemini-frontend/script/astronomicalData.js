@@ -103,10 +103,6 @@
                 })
                 collaList = collaList.replace(/,\s*$/, "");
             }else collaList = 'There is no collaboration.';
-            var tempStart = elem.startDate.split('T');
-            var tempStop  = elem.endDate.split('T');
-            var sStart    = tempStart[0].split('-');
-            var sStop     = tempStop[0].split('-');
             if(elem.category === 'satellite'){
                 document.getElementById('subCategory-block').style.display = 'block';
                 document.getElementById('subCategory').innerHTML = elem.subCategory;
@@ -117,8 +113,8 @@
             document.getElementById('creator').innerHTML            = elem.creator;
             document.getElementById('objective').innerHTML          = elem.objectives;
             document.getElementById('fund').innerHTML               = `$ ${elem.fundingInUSD}`;
-            document.getElementById('scheduleStart').innerHTML      = sStart[2] + '/' + sStart[1] + '/' + sStart[0];
-            document.getElementById('scheduleStop').innerHTML       = sStop[2] + '/' + sStop[1] + '/' + sStop[0];
+            document.getElementById('scheduleStart').innerHTML      = elem.startDate;
+            document.getElementById('scheduleStop').innerHTML       = elem.endDate;
             document.getElementById('category').innerHTML           = elem.category.charAt(0).toUpperCase() + elem.category.substring(1, elem.category.length);
             document.getElementById('starSystem').innerHTML         = elem.starSystem;
             document.getElementById('telescopeLocation').innerHTML  = elem.telescopeLocation;

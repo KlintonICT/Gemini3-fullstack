@@ -5,9 +5,6 @@
 
 package edu.gemini.app.ocs.model;
 
-import com.example.gemini.SciencePlan;
-
-import javax.persistence.*;
 import java.util.Objects;
 
 public class DataProcRequirement {
@@ -19,14 +16,12 @@ public class DataProcRequirement {
         BW, COLOR
     }
 
-    private Integer id;
     private DataProcRequirement.TYPE fileType;
     private double fileQuality;
     private COLOR_TYPE colorType;
     private double contrast;
     private double brightness;
     private double saturation;
-
 
     public DataProcRequirement() {
 
