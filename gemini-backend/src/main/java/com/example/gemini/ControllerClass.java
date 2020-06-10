@@ -1,13 +1,15 @@
 package com.example.gemini;
 
 import edu.gemini.app.ocs.OCS;
+import edu.gemini.app.ocs.example.MyObservingProgram;
+import edu.gemini.app.ocs.model.BaseObservingProgram;
+import edu.gemini.app.ocs.model.BaseSciencePlan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.nio.DoubleBuffer;
 import java.util.*;
 
 @Controller
@@ -22,16 +24,14 @@ public class ControllerClass {
 
     @CrossOrigin
     @GetMapping("/insertcategory")
-    public @ResponseBody Object insertcategory(@RequestParam String category)
-    {
+    public @ResponseBody Object insertcategory(@RequestParam String category) {
         StarSystem ss = new StarSystem();
         return ss.getCategory(category);
     }
 
     @CrossOrigin
     @GetMapping("/insertsatellite")
-    public @ResponseBody Object insertsatellite(@RequestParam String satellite)
-    {
+    public @ResponseBody Object insertsatellite(@RequestParam String satellite) {
         StarSystem ss = new StarSystem();
         return ss.getsat(satellite);
     }
@@ -96,21 +96,6 @@ public class ControllerClass {
         SciencePlan sc = new SciencePlan();
         sciencePlanRepo.save(sc);
         addsci(sc, body);
-        ArrayList<String> imgurl = getImageurl();
-        Random rand = new Random();
-        int ran=0;
-        int a = rand.nextInt(5) + 1;
-        for(int i=0; i<a; i++) {
-            AstronomicalData as = new AstronomicalData();
-            ran = rand.nextInt((imgurl.size())-1);
-            String result = imgurl.get(ran);
-            as.setImage_file(result);
-            as.setPlan(sc);
-            as.setValidate("Null");
-            astronomicalDataRepo.save(as);
-            sc.addAstroData(as);
-        }
-       sciencePlanRepo.save(sc);
         return sc.toString();
     }
 
@@ -171,7 +156,6 @@ public class ControllerClass {
         return userList;
     }
 
-
     @CrossOrigin
     @PutMapping("/submitSciencePlan")
     public @ResponseBody
@@ -181,6 +165,7 @@ public class ControllerClass {
             sc.setSubmitter(user);
             sc.setStat("S");
             sciencePlanRepo.save(sc);
+            this.addAstronomicalData();
             return "Successfully Submitted";
         } else return "Science plan not found.";
     }
@@ -229,18 +214,30 @@ public class ControllerClass {
         }
     }
 
-    @CrossOrigin
-    @GetMapping("/getImages")
-    public @ResponseBody BufferedImage getImagesBuffer(@RequestParam int id) {
-        OCS ocs = new OCS();
+
+    public void addAstronomicalData() {
+        OCS ocs = new OCS(false);
         Adapter adapter = new Adapter();
         adapter.addSciencePlan(ocs, sciencePlanRepo);
-        edu.gemini.app.ocs.model.AstronomicalData data = ocs.getSciencePlanByNo(id).getObservingProgram().getAstroData();
-        try {
-            return data.getAstronomicalData().get(0);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+        for(BaseSciencePlan sc: ocs.getAllSciencePlans()) {
+            System.out.println("controller class \n" + sc);
+            BaseObservingProgram op = sc.getObservingProgram();
+            edu.gemini.app.ocs.model.AstronomicalData data = op.getAstroData();
+            SciencePlan mySC = sciencePlanRepo.findById(sc.getPlanNo()).get();
+            try {
+                ArrayList<String> imgurl = data.getAstronomicalDataLinks();
+                for(String s: imgurl) {
+                    AstronomicalData as = new AstronomicalData();
+                    as.setImage_file(s);
+                    as.setPlan(mySC);
+                    as.setValidate("Null");
+                    astronomicalDataRepo.save(as);
+                    mySC.addAstroData(as);
+                }
+                sciencePlanRepo.save(mySC);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -262,5 +259,21 @@ public class ControllerClass {
         }
         return imagePaths;
     }
+
+//    ArrayList<String> imgurl = getImageurl();
+//    Random rand = new Random();
+//    int ran=0;
+//    int a = rand.nextInt(5) + 1;
+//            for(int i=0; i<a; i++) {
+//        AstronomicalData as = new AstronomicalData();
+//        ran = rand.nextInt((imgurl.size())-1);
+//        String result = imgurl.get(ran);
+//        as.setImage_file(result);
+//        as.setPlan(sc);
+//        as.setValidate("Null");
+//        astronomicalDataRepo.save(as);
+//        sc.addAstroData(as);
+//    }
+//            sciencePlanRepo.save(sc);
 
 }

@@ -7,8 +7,6 @@ package edu.gemini.app.ocs.model;
 
 import jparsec.observer.LocationElement;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.Objects;
 

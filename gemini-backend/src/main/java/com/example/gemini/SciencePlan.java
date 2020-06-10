@@ -5,7 +5,6 @@ import edu.gemini.app.ocs.model.DataProcRequirement;
 import jparsec.ephem.Target;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,7 +39,6 @@ public class SciencePlan {
     private double contrast;
     private double brightness;
     private double saturation;
-//    TODO("edit below so it works")
     @ManyToMany(mappedBy = "sciencePlan", fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     private List<UserDB> collaborator = new ArrayList<>();
     @OneToMany(mappedBy = "sciencePlan", cascade = CascadeType.ALL)
